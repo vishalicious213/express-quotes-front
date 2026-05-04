@@ -65,12 +65,20 @@
 
         img.addEventListener("load", () => {
             const isWide = img.naturalWidth > img.naturalHeight
+            const isTall = img.naturalHeight > img.naturalWidth
+            
             if (isWide) {
-                img.style.width = "90%"
+                img.style.width = "80%"
                 img.style.height = "auto"
-            } else {
+                img.style.maxWidth = "1200px"
+            } else if (isTall) {
                 img.style.width = "auto"
                 img.style.height = "70vh"
+                img.style.maxWidth = "300px"
+            } else {
+                img.style.width = "80%"
+                img.style.height = "80%"
+                img.style.maxWidth = "650px"
             }
         })
     </script>
