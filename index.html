@@ -21,10 +21,10 @@
         const img = document.querySelector('#quotePic')
 
         button.addEventListener('click', () => {
-            fetch('https://express-quotes.onrender.com/img')
+            fetch('https://express-quotes-kjon.onrender.com/img')
                 .then(response => response.json())
                 .then(data => {
-                    img.src = `https://express-quotes.onrender.com/public/${data.imgUrl}`
+                    img.src = `https://express-quotes-kjon.onrender.com/${data.imgUrl}`
                     img.alt = data.imgUrl
                 })
         })
