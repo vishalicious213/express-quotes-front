@@ -8,7 +8,7 @@
 
 <body>
     <div style="display: flex; flex-direction: column; align-items: center;">
-        <h1>I heard this line once...</h1>
+        <h1>I once heard...</h1>
         <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem;">
             <button id="btn1">Category 1</button>
             <button id="btn2">Category 2</button>
@@ -31,10 +31,10 @@
         const total = document.querySelector('#total')
 
         btn1.addEventListener('click', () => {
-            fetch('https://express-quotes-kjon.onrender.com/img')
+            fetch('https://express-quotes-kjon.onrender.com/img?category=1')
                 .then(response => response.json())
                 .then(data => {
-                    img.src = `https://express-quotes-kjon.onrender.com/${data.imgUrl}`
+                    img.src = `https://express-quotes-kjon.onrender.com/1/${data.imgUrl}`
                     img.alt = data.imgUrl
                     num.textContent = data.imgNum
                     total.textContent = data.total
@@ -42,10 +42,10 @@
         })
 
         btn2.addEventListener('click', () => {
-            fetch('https://express-quotes-kjon.onrender.com/img')
+            fetch('https://express-quotes-kjon.onrender.com/img?category=2')
                 .then(response => response.json())
                 .then(data => {
-                    img.src = `https://express-quotes-kjon.onrender.com/${data.imgUrl}`
+                    img.src = `https://express-quotes-kjon.onrender.com/2/${data.imgUrl}`
                     img.alt = data.imgUrl
                     num.textContent = data.imgNum
                     total.textContent = data.total
@@ -53,10 +53,10 @@
         })
 
         btn3.addEventListener('click', () => {
-            fetch('https://express-quotes-kjon.onrender.com/img')
+            fetch('https://express-quotes-kjon.onrender.com/img?category=3')
                 .then(response => response.json())
                 .then(data => {
-                    img.src = `https://express-quotes-kjon.onrender.com/${data.imgUrl}`
+                    img.src = `https://express-quotes-kjon.onrender.com/3/${data.imgUrl}`
                     img.alt = data.imgUrl
                     num.textContent = data.imgNum
                     total.textContent = data.total
