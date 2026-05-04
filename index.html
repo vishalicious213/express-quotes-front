@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Quotes</title>
+</head>
+
+<body>
+    <div style="display: flex; gap: 1rem; align-items: center;">
+        <h1>Express Quotes</h1>
+        <button>Click Me!</button>
+    </div>
+
+    <div>
+        <img id="quotePic" src="" alt="">
+    </div>
+
+    <script>
+        const button = document.querySelector('button')
+        const img = document.querySelector('#quotePic')
+
+        button.addEventListener('click', () => {
+            fetch('https://express-quotes.onrender.com/img')
+                .then(response => response.json())
+                .then(data => {
+                    img.src = `https://express-quotes.onrender.com/public/${data.imgUrl}`
+                    img.alt = data.imgUrl
+                })
+        })
+
+        img.addEventListener("load", () => {
+            const isWide = img.naturalWidth > img.naturalHeight
+            if (isWide) {
+                img.style.width = "90%"
+                img.style.height = "auto"
+            } else {
+                img.style.width = "auto"
+                img.style.height = "70vh"
+            }
+        })
+    </script>
+</body>
+</html>
