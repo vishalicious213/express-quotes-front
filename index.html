@@ -9,7 +9,7 @@
 <body>
     <div style="display: flex; flex-direction: column; align-items: center;">
         <h1>I once heard...</h1>
-        <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem;">
+        <div id="buttons" style="display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem;">
             <button id="btn1">Chump</button>
             <button id="btn2">Life</button>
             <button id="btn3">Work</button>
@@ -23,40 +23,17 @@
     </div>
 
     <script>
-        const btn1 = document.querySelector('#btn1')
-        const btn2 = document.querySelector('#btn2')
-        const btn3 = document.querySelector('#btn3')
+        const buttons = document.querySelector('#buttons')
         const img = document.querySelector('#quotePic')
         const num = document.querySelector('#num')
         const total = document.querySelector('#total')
 
-        btn1.addEventListener('click', () => {
-            fetch('https://express-quotes-kjon.onrender.com/img?category=1')
+        buttons.addEventListener('click', (e) => {
+            const cat = e.target.id.at(-1)
+            fetch(`https://express-quotes-kjon.onrender.com/img?category=${cat}`)
                 .then(response => response.json())
                 .then(data => {
-                    img.src = `https://express-quotes-kjon.onrender.com/1/${data.imgUrl}`
-                    img.alt = data.imgUrl
-                    num.textContent = data.imgNum
-                    total.textContent = data.total
-                })
-        })
-
-        btn2.addEventListener('click', () => {
-            fetch('https://express-quotes-kjon.onrender.com/img?category=2')
-                .then(response => response.json())
-                .then(data => {
-                    img.src = `https://express-quotes-kjon.onrender.com/2/${data.imgUrl}`
-                    img.alt = data.imgUrl
-                    num.textContent = data.imgNum
-                    total.textContent = data.total
-                })
-        })
-
-        btn3.addEventListener('click', () => {
-            fetch('https://express-quotes-kjon.onrender.com/img?category=3')
-                .then(response => response.json())
-                .then(data => {
-                    img.src = `https://express-quotes-kjon.onrender.com/3/${data.imgUrl}`
+                    img.src = `https://express-quotes-kjon.onrender.com/${cat}/${data.imgUrl}`
                     img.alt = data.imgUrl
                     num.textContent = data.imgNum
                     total.textContent = data.total
